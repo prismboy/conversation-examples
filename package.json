@@ -1,0 +1,19 @@
+{
+  "name": "conversation-examples",
+  "version": "1.0.0",
+  "description": "Conversation, Speech to Text and Text to Speech",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "~1.15.0",
+    "cfenv": "~1.0.3",
+    "ejs": "~2.5.3",
+    "express": "~4.13.4",
+    "morgan": "~1.7.0",
+    "serve-favicon": "~2.3.0",
+    "vcap_services": "~0.2.0",
+    "watson-developer-cloud": "~2.17.0"
+  }
+}

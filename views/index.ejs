@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
+    <script src="/watson-speech.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.2/fetch.js"></script>
+    <script src="/index.js"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="/mybootstrap.css">
+    <style type="text/css">
+    .bs-component {
+      position: relative;
+    }
+    div#headerArea {
+      position: fixed !important;
+      position: absolute;
+      background-color: #466BB0;
+      color: #FFF;
+      top: 0;
+      height: 50px;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+    }
+    div#conversation_field {
+      padding-left: 10%;
+      padding-right: 10%;
+    }
+    input.btn{
+      background-color: #466BB0;
+      color: #FFFFFF;
+    }
+
+
+    @media ( min-width: 768px ) {
+      body {padding-top: 80px;
+        padding-bottom: 10%;
+
+      }
+      div#footerArea {
+        position: fixed !important;
+        position: absolute;
+        background-color: #FFFFFF;
+        bottom: 0;
+        height: 100px;
+        padding-top: 10px;
+        padding-right: 10%;
+        left: 0;
+        width:  70vw;
+        z-index: 1;
+      }
+      #QuestionText{
+        width:  60vw;
+        margin-left: 1%;
+      }
+    }
+
+    /*モバイル用 Media Queries*/
+    @media screen and (max-width: 768px) {
+      body {padding-top: 80px;
+        padding-bottom: 10%;
+      }
+      #banner {
+        min-height: 70px;
+        border-bottom: none;
+      }
+      div#conversation_field {
+      padding-left: 10%;
+      padding-right: 10%;
+      padding-bottom: 15%;
+    }
+      div#footerArea {
+        position: fixed !important;
+        position: absolute;
+        background-color: #FFFFFF;
+        bottom: 0;
+        height: 100px;
+        padding-top: 0px;
+        padding-right: 0%;
+        left: 0;
+        width: 100%;
+        z-index: 3;
+        background-color: transparent;
+      }
+      div.content{
+        position: absolute;
+        bottom:26%;
+      }
+
+      #QuestionText{
+        width: 86vw;
+        margin-left: 1%;
+      }
+    }
+
+    /* balloon common */
+    div.balloon-wrapper {
+      width: 500px;
+      margin: 15px auto;
+    }
+    div.balloon-wrapper::after {
+      clear: both;
+      content: "";
+      display: block;
+      line-height: 0;
+    }
+    p.balloon-left,
+    p.balloon-right {
+      position: relative;
+      z-index: 1;
+      max-width: 80%;
+      min-width: 10%;
+      margin: 15px auto;
+      padding: 13px;
+      background-color: #fff;
+      border-width: 3px;
+      border-style: solid;
+      border-radius: 10px;
+    }
+    p.balloon-left::before,
+    p.balloon-right::before {
+      content: "";
+      display: block;
+      position: absolute;
+      z-index: 10;
+      top: 10px;
+      width:  0;
+      height: 0;
+      border: 15px solid transparent;
+    }
+    p.balloon-left::after,
+    p.balloon-right::after {
+      content: "";
+      display: block;
+      position: absolute;
+      z-index: 100;
+      top: 10px;
+      width:  0;
+      height: 0;
+      border: 15px solid transparent;
+    }
+
+    /* balloon left */
+    p.balloon-left {
+      float: left;
+      border-color: #EEEEEE;
+      background-color: #EEEEEE;
+    }
+    p.balloon-left::before {
+      left: -31px;
+      border-right: 15px solid #EEEEEE;
+    }
+    p.balloon-left::after {
+      left: -26px;
+      border-right: 15px solid #EEEEEE;
+    }
+
+    /* balloon right */
+    p.balloon-right {
+      float: right;
+      border-color: #466BB0;
+      background-color: #466BB0;
+      color:#ffffff;
+    }
+    p.balloon-right::before {
+      right: -31px;
+      border-left: 15px solid #466BB0;
+    }
+    p.balloon-right::after {
+      right: -26px;
+      border-left: 15px solid #466BB0;
+    }
+    </style>
+    <title>Chatbot Demo</title>
+  </head>
+  <body style="font-family:'Lucida Grande', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, メイリオ, sans-serif;">
+
+    <!-- header
+    ================================================== -->
+    <header>
+        <div class="container-fluid" id="headerArea">
+          <h4>Chatbot Demo (IBM Watson Conversation)</h4>
+        </div><!-- /.container-fluid -->
+    </header>
+
+    <!-- ガイド部分
+    ================================================== -->
+    <div class="row">
+      <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
+          <div class="bs-component">
+              <div id="conversation_field"></div>
+          </div>
+      </div>
+    </div>
+
+    <!-- Footer箇所
+    ================================================== -->
+    <form id="searchFormId" action="#">
+    <div class="row container-fluid" id="footerArea">
+        <div class="content">
+            <table>
+              <tr>
+                <td><input type="text" class="form-control" id="QuestionText" placeholder="ここに質問を入力してください"></td>
+                <td><input type="submit" value="送信" class="btn" onclick="askwatson($('#QuestionText').val());"><!-- /button --></td>
+              </tr>
+            </table>
+        </div>
+    </div>
+    </form>
+
+    <!-- JavaScript Section
+    ================================================== -->
+    <script>
+    var answerNumber = 1;
+    var context = {};
+
+    $(function(){
+        setTimeout(function(){
+            document.getElementById("conversation_field").innerHTML += '<div class="row"><div class="col-xs-11"><p class="balloon-left"><%= response %></p></div></div>';
+            context = <%- context %>;
+        },1000);
+    });
+
+    function askwatson(question) {
+      question = question.replace(/\r?\n/g,"");
+      question_no_space = question.replace(/\s/g,"");
+      if(question_no_space != "") {
+          document.getElementById("conversation_field").innerHTML += '<div class="row"><div class="col-xs-11"><p class="balloon-right" id="watsonAnswer' + answerNumber + '">' + question + '</p></div></div>';
+          $('#QuestionText').val("");
+          $.ajax({
+              url: '/chat',
+              type: "POST",
+              data: {
+                  "input_text": question,
+                  "context": context
+              },
+              dataType: 'json',
+          })
+          .done(function(response){
+              if(response.context != null){
+                  context = response.context;
+              }
+              document.getElementById("conversation_field").innerHTML += '<div class="row"><div class="col-xs-11"><p class="balloon-left">' + response.output_text + '</p></div></div>';
+              document.getElementById("watsonAnswer" + answerNumber).scrollIntoView(true);
+              document.getElementById("QuestionText").focus();
+              $('#QuestionText').val("");
+              answerNumber++;
+          })
+          .fail(function( jqXHR, textStatus, errorThrown ){
+              document.getElementById("conversation_field").innerHTML += '<div class="row"><div class="col-xs-11"><p class="balloon-left">' + "申し訳ございません。データに不備があります。" + '</p></div></div>';
+          });
+
+      }
+      $('#searchFormId').on('submit', function() {
+          var question = $('#QuestionText').val();
+          askwatson(question);
+          return false;
+      });
+    }
+    </script>
+  </body>
+</html>
