@@ -36,7 +36,9 @@ convCreds.version_date = '2017-02-03';
 exports.sttAuth = new watson.AuthorizationV1(sttCreds);
 
 // TTS 認証サービス
-exports.ttsAuth = new watson.AuthorizationV1(ttsCreds);
+// exports.ttsAuth = new watson.AuthorizationV1(ttsCreds);
+// ttsCreds.version = 'v1';
+// exports.tts = watson.text_to_speech(ttsCreds);
 
 // Conversation Workspace ID
 exports.workspaceId = process.env.CONVERSATION_WORKSPACE_ID;

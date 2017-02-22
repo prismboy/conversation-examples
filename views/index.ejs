@@ -218,6 +218,7 @@
 
     <!-- JavaScript Section
     ================================================== -->
+    <script src="/bundle.js"></script>
     <script>
     var answerNumber = 1;
     var context = {};
@@ -226,6 +227,7 @@
         setTimeout(function(){
             document.getElementById("conversation_field").innerHTML += '<div class="row"><div class="col-xs-11"><p class="balloon-left"><%= response %></p></div></div>';
             context = <%- context %>;
+            toConsole("<%= response %>");
         },1000);
     });
 
@@ -253,6 +255,7 @@
               document.getElementById("QuestionText").focus();
               $('#QuestionText').val("");
               answerNumber++;
+              toConsole(response.output_text);
           })
           .fail(function( jqXHR, textStatus, errorThrown ){
               document.getElementById("conversation_field").innerHTML += '<div class="row"><div class="col-xs-11"><p class="balloon-left">' + "申し訳ございません。データに不備があります。" + '</p></div></div>';

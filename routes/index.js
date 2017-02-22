@@ -13,7 +13,9 @@ exports.index = function (req, res) {
     res.render('index', {'response': context.initResponse.response, 'context': JSON.stringify(context.initResponse.context)});
 };
 
-// STT トークンを返す。
+/**
+ * STT トークンを返す。
+ */
 exports.sttToken = function (req, res) {
     context.sttAuth.getToken(function (err, token) {
         if (err) {
@@ -25,19 +27,9 @@ exports.sttToken = function (req, res) {
     });
 };
 
-// TTS トークンを返す。
-exports.ttsToken = function (req, res) {
-    context.ttsAuth.getToken(function (err, token) {
-        if (err) {
-            console.log('Error retrieving token: ', err);
-            res.status(500).send('Error retrieving token');
-        } else {
-            res.send(token);
-        }
-    });
-};
-
-// Conversationサービスと会話する。
+/**
+ * Conversationサービスと会話する。
+ */
 exports.chat = function (req, res) {
     context.conversation.message({
         workspace_id: context.workspaceId,
@@ -54,3 +46,4 @@ exports.chat = function (req, res) {
         }
     });
 };
+
