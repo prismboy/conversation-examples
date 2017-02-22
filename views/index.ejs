@@ -209,7 +209,10 @@
             <table>
               <tr>
                 <td><input type="text" class="form-control" id="QuestionText" placeholder="ここに質問を入力してください"></td>
-                <td><input type="submit" value="送信" class="btn" onclick="askwatson($('#QuestionText').val());"><!-- /button --></td>
+                <td><input type="submit" value="送信" class="btn" onclick="askwatson($('#QuestionText').val());"></td>
+                <td><input type="hidden" id="response_text"></td>
+                <td><input type="button" id="listen" class="btn" value="▶"></td>
+                <td><input type="button" id="speak" class="btn" value="●" style="color: #FF0000;"></td>
               </tr>
             </table>
         </div>
@@ -227,7 +230,8 @@
         setTimeout(function(){
             document.getElementById("conversation_field").innerHTML += '<div class="row"><div class="col-xs-11"><p class="balloon-left"><%= response %></p></div></div>';
             context = <%- context %>;
-            toConsole("<%= response %>");
+            document.querySelector('#response_text').value = "<%= response %>";
+            document.querySelector('#listen').click();
         },1000);
     });
 
@@ -255,7 +259,8 @@
               document.getElementById("QuestionText").focus();
               $('#QuestionText').val("");
               answerNumber++;
-              toConsole(response.output_text);
+              document.querySelector('#response_text').value = response.output_text;
+              document.querySelector('#listen').click();
           })
           .fail(function( jqXHR, textStatus, errorThrown ){
               document.getElementById("conversation_field").innerHTML += '<div class="row"><div class="col-xs-11"><p class="balloon-left">' + "申し訳ございません。データに不備があります。" + '</p></div></div>';

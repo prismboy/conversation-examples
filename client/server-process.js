@@ -13,7 +13,7 @@ module.exports = function (text, target) {
             return response.json();
         }).then(function(wordTiming) {
             // will be a 2d array in the form: [ [ 'word', startTime, endTime ], ... ]
-            console.log(wordTiming);
+            // console.log(wordTiming);
         }).catch(function(err) {
             console.log(err);
         })
