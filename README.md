@@ -10,8 +10,8 @@
     - [https://710-o900156-conversation-examples.au-syd.mybluemix.net](https://710-o900156-conversation-examples.au-syd.mybluemix.net)
 1. テキスト入力して、Enterキーもしくは『送信』ボタンをクリック
     - Watsonからの応答が表示されるとともに、回答を読み上げます。
-    - 緑色の再生ボダン(<font color="#00FF00">▶</font>)をクリックすると、直前に読み上げたテキストを再生します。
-1. テキスト入力の代わりに、赤丸の録音ボタン(<font color="red">●</font>)をクリックしてからマイクに向けて喋り、四角の停止ボタン(■)をクリックすることにより、自動的に内容を送信します。
+    - 緑色の再生ボダン(<span style="color: #00FF00;">▶</span>)をクリックすると、直前に読み上げたテキストを再生します。
+1. テキスト入力の代わりに、赤丸の録音ボタン(<span style="color: red;">●</span>)をクリックしてからマイクに向けて喋り、四角の停止ボタン(■)をクリックすることにより、自動的に内容を送信します。
 1. 学習させた会話の内容は『学習済みの会話』リンクをクリックすることにより、別ウィンドウで内容が表示されますので、そちらで確認することができます。
     - [ヘルプ画面](https://710-o900156-conversation-examples.au-syd.mybluemix.net/help.html)
     - また、学習内容をエクスポートしたファイル(JSON)もこのページからダウンロードすることができます。
@@ -46,13 +46,13 @@
 	    │    └ tts.js
 	    │
 	    └ views/
-	            └ index.ejs
+	    　    └ index.ejs
 
 ## ランタイム環境
 
 - ランタイム
     1. Node.js
-    1. 256 MB
+        - 256 MB
 - 使用サービス
     1. Conversation
     1. Speech to Text
