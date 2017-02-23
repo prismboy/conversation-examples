@@ -1,5 +1,8 @@
 'use strict';
 
+/**
+ * テキストを喋らせる
+ */
 module.exports = function (text, target) {
     var audio = new Audio();
 

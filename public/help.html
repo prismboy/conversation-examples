@@ -1,0 +1,67 @@
+<html lang="ja">
+    <meta charset="utf-8">
+    <head>
+        <title>会話デモアプリ・ヘルプ</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="/mybootstrap.css">
+        <style type="text/css">
+            h2 {
+                background-color: #466BB0;
+                color: #FFFFFF;
+            }
+            th {
+                background-color: #87CEFA;
+                color: #FFFFFF;
+            }
+            tr.odd {
+                background-color: #E0FFFF;
+            }
+            input.btn{
+              background-color: #466BB0;
+              color: #FFFFFF;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>学習済み会話内容</h2>
+        <br>
+        <table width="70%" align="center">
+            <tr><th width="30%">Intents</th><th width="40%">会話</th><th width="30%">ジャンル</th></tr>
+            <tr><td>あいさつ</td><td>こんにちは</td><td>-</td></tr>
+            <tr class="odd"><td></td><td>おはよう</td><td>-</td></tr>
+            <tr><td></td><td>ハロー</td><td>-</td></tr>
+            <tr class="odd"><td>起動</td><td>ライトを点けて</td><td>-</td></tr>
+            <tr><td></td><td>雨が降ってきた</td><td>-</td></tr>
+            <tr class="odd"><td></td><td>テレビをつけて</td><td>-</td></tr>
+            <tr><td></td><td>音楽をかけて</td><td>クラシック</td></tr>
+            <tr class="odd"><td></td><td></td><td>ジャズ</td></tr>
+            <tr><td></td><td></td><td>ロック</td></tr>
+            <tr class="odd"><td></td><td></td><td>演歌</td></tr>
+            <tr><td>停止</td><td>ライトを消して</td><td>-</td></tr>
+            <tr><td></td><td>雨が止んだ</td><td>-</td></tr>
+            <tr class="odd"><td></td><td>音楽を止めて</td><td>-</td></tr>
+        </table>
+        <br>
+        <table border="1" align="center">
+            <tr>
+                <td nowrap>
+                学習済みワークスペースのエクスポートファイルは
+                <a href="/conversation-sample-workspace.json" target="_blank">こちら</a>をクリック
+                </td>
+            </tr>
+        </table>
+        <br><br>
+        <h2>画面の説明</h2>
+        <br>
+        <table width="90%" align="center">
+            <tr><th nowrap>画面オブジェクト&nbsp;</th><th nowrap>オブジェクト名称&nbsp;</th><th witdth="60%">説明</th></tr>
+            <tr><td><input type="text" class="form-control" placeholder="ここに会話を..." size="5"></td><td>入力欄</td><td>このフィールドに会話の内容を入力します。<br>&nbsp;</td></tr>
+            <tr class="odd"><td><input type="submit" value="送信" class="btn"></td><td>送信ボタン</td><td>入力欄の内容を送信します。EnterキーでもOKです。<br>&nbsp;</td></tr>
+            <tr><td><input type="button" class="btn" value="▶" style="color: #00FF00;"></td><td>再生ボタン</td><td>直前に読み上げたテキストをもう一度再生します。<br>&nbsp;</td></tr>
+            <tr class="odd"><td><input type="button" class="btn" value="●" style="color: #FF0000;"></td><td>録音ボタン</td><td>クリックすると、音声入力が可能になります。入力内容を送信するためには隣の停止ボタンをクリックしてください。</td></tr>
+            <tr><td><input type="button" class="btn" value="■" style="color: #000000;"></td><td>停止ボタン</td><td>音声入力を停止し、入力内容を送信します。<br>&nbsp;</td></tr>
+        </table>
+        <br><br>
+    </body>
+</html>

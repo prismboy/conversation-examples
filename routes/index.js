@@ -14,20 +14,6 @@ exports.index = function (req, res) {
 };
 
 /**
- * STT トークンを返す。
- */
-exports.sttToken = function (req, res) {
-    context.sttAuth.getToken(function (err, token) {
-        if (err) {
-            console.log('Error retrieving token: ', err);
-            res.status(500).send('Error retrieving token');
-        } else {
-            res.send(token);
-        }
-    });
-};
-
-/**
  * Conversationサービスと会話する。
  */
 exports.chat = function (req, res) {

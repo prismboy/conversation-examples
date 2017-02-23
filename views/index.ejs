@@ -10,7 +10,7 @@
             crossorigin="anonymous"></script>
     <script src="/watson-speech.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.2/fetch.js"></script>
-    <script src="/index.js"></script>
+    <!-- script src="/index.js"></script -->
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -208,12 +208,14 @@
         <div class="content">
             <table>
                 <tr>
-                    <td><input type="text" class="form-control" id="QuestionText" placeholder="ここに質問を入力してください"></td>
-                    <td><input type="submit" value="送信" class="btn" onclick="askwatson($('#QuestionText').val());"></td>
+                    <td><input type="text" class="form-control" id="QuestionText" placeholder="ここに会話を入力してください"></td>
+                    <td><input type="submit" id="ask" value="送信" class="btn" onclick="askwatson($('#QuestionText').val());"></td>
                     <td><input type="hidden" id="response_text"></td>
-                    <td><input type="button" id="listen" class="btn" value="▶"></td>
-                    <td><input type="button" id="speak" class="btn" value="●" style="color: #FF0000;"></td>
+                    <td><input type="button" id="play" class="btn" value="▶" style="color: #00FF00;"></td>
+                    <td><input type="button" id="record" class="btn" value="●" style="color: #FF0000;"></td>
+                    <td><input type="button" id="stop" class="btn" value="■" style="color: #000000;"></td>
                 </tr>
+                <tr><td colspan="6"><a href="/help.html" target="_blank">学習済みの会話</a></td></tr>
             </table>
         </div>
     </div>
@@ -228,10 +230,10 @@
 
     $(function(){
         setTimeout(function(){
+            document.querySelector('#response_text').value = "<%= response %>";
+            document.querySelector('#play').click();
             document.getElementById("conversation_field").innerHTML += '<div class="row"><div class="col-xs-11"><p class="balloon-left"><%= response %></p></div></div>';
             context = <%- context %>;
-            document.querySelector('#response_text').value = "<%= response %>";
-            document.querySelector('#listen').click();
         },1000);
     });
 
@@ -254,13 +256,13 @@
               if(response.context != null){
                   context = response.context;
               }
+              document.querySelector('#response_text').value = response.output_text;
+              document.querySelector('#play').click();
               document.getElementById("conversation_field").innerHTML += '<div class="row"><div class="col-xs-11"><p class="balloon-left">' + response.output_text + '</p></div></div>';
               document.getElementById("watsonAnswer" + answerNumber).scrollIntoView(true);
               document.getElementById("QuestionText").focus();
               $('#QuestionText').val("");
               answerNumber++;
-              document.querySelector('#response_text').value = response.output_text;
-              document.querySelector('#listen').click();
           })
           .fail(function( jqXHR, textStatus, errorThrown ){
               document.getElementById("conversation_field").innerHTML += '<div class="row"><div class="col-xs-11"><p class="balloon-left">' + "申し訳ございません。データに不備があります。" + '</p></div></div>';
