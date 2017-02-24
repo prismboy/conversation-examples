@@ -29,25 +29,43 @@
 	    │
 	    ├ client/
 	    │    ├ index.js
-	    │    └ speaking.js
+	    │    └ play-process.js
 	    │
 	    ├ public/
+	    │    ├ css/
+	    │    │    └ mybootstrap.css
+	    │    ├ img/
+	    │    │    └ microphone.svg
 	    │    ├ conversation-sample-workspace.json
 	    │    ├ favicon.ico
 	    │    ├ help.html
-	    │    ├ mybootstrap.css
 	    │    └ watson-speech.js
 	    │
 	    ├ routes/
-	    │    └ index.js
-	    │
-	    ├ utils/
-	    │    ├ context.js
+	    │    ├ index.js
 	    │    ├ stt.js
 	    │    └ tts.js
 	    │
+	    ├ utils/
+	    │    └ context.js
+	    │
 	    └ views/
 	    　    └ index.ejs
+
+| ファイルパス | 出自 |
+|:---------|:-----|
+| /app.js|  |
+| /package.json | 一平氏stt-masterをもとに追記 |
+| /README.md | オリジナル |
+| /client/index.js | https://github.com/nfriedly/tts-timing/client/index.js |
+| /client/play-process.js | https://github.com/nfriedly/tts-timing/client/server-process.js からリネーム |
+| /public/css/mybootstrap.css |  一平氏 stt-master から拝借 |
+| /public/img/microphone.svg |  https://github.com/nfriedly/speech-dialog/blob/master/public/images/icons/microphone.svg |
+| /public/conversation-sample-workspace.json | オリジナル |
+| /pblic/favicon.ico | 一平氏 stt-masterから拝借 |
+| /public/help.html | オリジナル |
+| /public/watson-speech.js |  |
+
 
 ## ランタイム環境
 

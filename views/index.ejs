@@ -10,11 +10,10 @@
             crossorigin="anonymous"></script>
     <script src="/watson-speech.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.2/fetch.js"></script>
-    <!-- script src="/index.js"></script -->
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" href="/mybootstrap.css">
+    <link rel="stylesheet" href="/css/mybootstrap.css">
     <style type="text/css">
     .bs-component {
       position: relative;
@@ -35,6 +34,7 @@
       padding-right: 10%;
     }
     input.btn{
+      height: 68px;
       background-color: #466BB0;
       color: #FFFFFF;
     }
@@ -178,6 +178,18 @@
       right: -26px;
       border-left: 15px solid #466BB0;
     }
+
+    .chat-window--microphone-button {
+      width: 32px;
+      height: 48px;
+      padding: 2px 2px;
+      cursor: pointer;
+      background-color: #466BB0;
+      right: 0;
+    }
+    .chat-window--microphone-button.active {
+      background-color: #d74108;
+    }
     </style>
     <title>Chatbot Demo</title>
   </head>
@@ -188,7 +200,7 @@
     <header>
         <div class="container-fluid" id="headerArea">
           <h4>Chatbot Demo (IBM Watson Conversation)</h4>
-        </div><!-- /.container-fluid -->
+        </div>
     </header>
 
     <!-- ガイド部分
@@ -208,12 +220,12 @@
         <div class="content">
             <table>
                 <tr>
-                    <td><input type="text" class="form-control" id="QuestionText" placeholder="ここに会話を入力してください"></td>
-                    <td><input type="submit" id="ask" value="送信" class="btn" onclick="askwatson($('#QuestionText').val());"></td>
+                    <td><input type="text" class="form-control" id="QuestionText" placeholder="ここに会話を入力してください" style="height: 48px;"></td>
+                    <td><input type="submit" id="ask" value="送信" class="btn" onclick="askwatson($('#QuestionText').val());" style="display: none;"></td>
                     <td><input type="hidden" id="response_text"></td>
-                    <td><input type="button" id="play" class="btn" value="▶" style="color: #00FF00;"></td>
-                    <td><input type="button" id="record" class="btn" value="●" style="color: #FF0000;"></td>
-                    <td><input type="button" id="stop" class="btn" value="■" style="color: #000000;"></td>
+                    <td><input type="button" id="play" class="btn" style="display: none;"></td>
+                    <td><img id="record" src="/img/microphone.svg" class="chat-window--microphone-button"></td>
+                    <td><input type="button" id="stop" class="btn" style="display: none;"></td>
                 </tr>
                 <tr><td colspan="6"><a href="/help.html" target="_blank">学習済みの会話</a></td></tr>
             </table>

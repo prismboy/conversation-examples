@@ -22,8 +22,8 @@ app.use('/', express.static(__dirname + '/public'));
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use('/api/speech-to-text/', require('./utils/stt.js').router);
-app.use('/api/text-to-speech/', require('./utils/tts.js').router);
+app.use('/api/speech-to-text/', require('./routes/stt.js').router);
+app.use('/api/text-to-speech/', require('./routes/tts.js').router);
 
 // ルートを設定する。
 app.get('/', routes.index);

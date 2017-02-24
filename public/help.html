@@ -4,7 +4,7 @@
         <title>会話デモアプリ・ヘルプ</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-        <link rel="stylesheet" href="/mybootstrap.css">
+        <link rel="stylesheet" href="/css/mybootstrap.css">
         <style type="text/css">
             h2 {
                 background-color: #466BB0;
@@ -20,6 +20,14 @@
             input.btn{
               background-color: #466BB0;
               color: #FFFFFF;
+            }
+            .chat-window--microphone-button {
+              width: 32px;
+              height: 48px;
+              padding: 2px 2px;
+              cursor: pointer;
+              background-color: #466BB0;
+              right: 0;
             }
         </style>
     </head>
@@ -56,12 +64,15 @@
         <br>
         <table width="90%" align="center">
             <tr><th nowrap>画面オブジェクト&nbsp;</th><th nowrap>オブジェクト名称&nbsp;</th><th witdth="60%">説明</th></tr>
-            <tr><td><input type="text" class="form-control" placeholder="ここに会話を..." size="5"></td><td>入力欄</td><td>このフィールドに会話の内容を入力します。<br>&nbsp;</td></tr>
+            <tr><td><input type="text" class="form-control" placeholder="ここに会話を..." size="5" style="height: 48px"></td><td>入力欄</td><td>このフィールドに会話の内容を入力し、Enterキーで送信します。</td></tr>
+            <tr class="odd"><td><img src="/img/microphone.svg" class="chat-window--microphone-button"></td><td>音声入力・停止ボタン</td><td>クリックすると、音声入力が可能になります。再度クリックすると音声入力を停止し、スピーチ内容を送信します。</td></tr>
+        </table>
+        <!--
             <tr class="odd"><td><input type="submit" value="送信" class="btn"></td><td>送信ボタン</td><td>入力欄の内容を送信します。EnterキーでもOKです。<br>&nbsp;</td></tr>
             <tr><td><input type="button" class="btn" value="▶" style="color: #00FF00;"></td><td>再生ボタン</td><td>直前に読み上げたテキストをもう一度再生します。<br>&nbsp;</td></tr>
             <tr class="odd"><td><input type="button" class="btn" value="●" style="color: #FF0000;"></td><td>録音ボタン</td><td>クリックすると、音声入力が可能になります。入力内容を送信するためには隣の停止ボタンをクリックしてください。</td></tr>
             <tr><td><input type="button" class="btn" value="■" style="color: #000000;"></td><td>停止ボタン</td><td>音声入力を停止し、入力内容を送信します。<br>&nbsp;</td></tr>
-        </table>
+        -->
         <br><br>
     </body>
 </html>
