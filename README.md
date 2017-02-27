@@ -11,8 +11,7 @@
 1. テキスト入力して、Enterキーもしくは『送信』ボタンをクリック
     - Watsonからの応答が表示されるとともに、音声にて読み上げます。
        - (ただし、画面表示と音声出力にタイムラグがあります。)
-    - 緑色の再生ボダン(▶)をクリックすると、直前に読み上げたテキストを再生します。
-1. テキスト入力の代わりに、赤丸の録音ボタン(●)をクリックしてからマイクに向けて喋り、四角の停止ボタン(■)をクリックすることにより、自動的に内容を送信します。
+1. テキスト入力の代わりに、マイクボタンをクリックしてからマイクに向けて喋り、再度マイクボタンをクリックすることにより、自動的に内容を送信します。
 1. 学習させた会話の内容は『学習済みの会話』リンクをクリックすることにより、別ウィンドウで内容が表示されますので、そちらで確認することができます。
     - [ヘルプ画面](https://710-o900156-conversation-examples.au-syd.mybluemix.net/help.html)
     - また、学習内容をエクスポートしたファイル(JSON)もこのページからダウンロードすることができます。
@@ -54,17 +53,22 @@
 
 | ファイルパス | 出自 |
 |:---------|:-----|
-| /app.js|  |
-| /package.json | 一平氏stt-masterをもとに追記 |
+| /app.js| オリジナル |
+| /package.json | [一平氏stt-masterをもとに追記](https://github.com/ippei0605/stt/blob/master/package.json) |
 | /README.md | オリジナル |
-| /client/index.js | https://github.com/nfriedly/tts-timing/client/index.js |
-| /client/play-process.js | https://github.com/nfriedly/tts-timing/client/server-process.js からリネーム |
-| /public/css/mybootstrap.css |  一平氏 stt-master から拝借 |
-| /public/img/microphone.svg |  https://github.com/nfriedly/speech-dialog/blob/master/public/images/icons/microphone.svg |
+| /client/index.js | [Text to Speechデモ](https://github.com/nfriedly/tts-timing/client/index.js) |
+| /client/play-process.js | [Text to Speechデモのserver-process.js](https://github.com/nfriedly/tts-timing/client/server-process.js) をリネーム |
+| /public/css/mybootstrap.css |  [一平氏 stt-master から拝借](https://github.com/ippei0605/stt/blob/master/public/mybootstrap.css) |
+| /public/img/microphone.svg | [Watson Speech JavaScript SDK Examples](https://github.com/nfriedly/speech-dialog/blob/master/public/images/icons/microphone.svg) |
 | /public/conversation-sample-workspace.json | オリジナル |
-| /pblic/favicon.ico | 一平氏 stt-masterから拝借 |
+| /pblic/favicon.ico | [一平氏 stt-masterから拝借](https://github.com/ippei0605/stt/blob/master/public/favicon.ico) |
 | /public/help.html | オリジナル |
-| /public/watson-speech.js |  |
+| /public/watson-speech.js | [Watson Speech JavaScript SDK Examples](https://github.com/watson-developer-cloud/speech-javascript-sdk/blob/master/dist/watson-speech.js) |
+| /routes/index.js |  オリジナル |
+| /routes/stt.js | [Text to Speechデモ](https://github.com/nfriedly/tts-timing/blob/master/server/stt.js) |
+| /routes/tts.js | [Text to Speechデモ](https://github.com/nfriedly/tts-timing/blob/master/server/tts.js) |
+| /utils/context.js | オリジナル |
+| /views/index.ejs | オリジナル |
 
 
 ## ランタイム環境
@@ -73,9 +77,9 @@
     1. Node.js
         - 256 MB
 - 使用サービス
-    1. Conversation
-    1. Speech to Text
-    1. Text to Speech
+    1. Conversation ([カタログ](https://console.ng.bluemix.net/catalog/services/conversation/?taxonomyNavigation=apps))
+    1. Speech to Text ([カタログ](https://console.ng.bluemix.net/catalog/services/speech-to-text/))
+    1. Text to Speech ([カタログ](https://console.ng.bluemix.net/catalog/services/text-to-speech/))
 - ユーザー定義環境変数
     1. CONVERSATION_WORKSPACE_ID
         - Conversationツールで『Workspace ID』をコピー&ペーストする
