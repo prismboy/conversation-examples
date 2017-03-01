@@ -270,7 +270,12 @@
               }
               document.querySelector('#response_text').value = response.output_text;
               document.querySelector('#play').click();
-              document.getElementById("conversation_field").innerHTML += '<div class="row"><div class="col-xs-11"><p class="balloon-left">' + response.output_text + '</p></div></div>';
+              var response_output_text = '';
+              for(var i = 0; i < response.output_text.length; i++){
+                  if(response_output_text !== '') response_output_text+='<br>';
+                  response_output_text+=response.output_text[i]; 
+              }
+              document.getElementById("conversation_field").innerHTML += '<div class="row"><div class="col-xs-11"><p class="balloon-left">' + response_output_text + '</p></div></div>';
               document.getElementById("watsonAnswer" + answerNumber).scrollIntoView(true);
               document.getElementById("QuestionText").focus();
               $('#QuestionText').val("");
