@@ -32,7 +32,7 @@ document.querySelector('#record').onclick = function () {
         var stream = WatsonSpeech.SpeechToText.recognizeMicrophone({
             token: token,
             model: 'ja-JP_BroadbandModel',
-            'X-Watson-Learning-Opt-Out': 'true', /* Watson内でのロギングを禁止 */
+            'X-Watson-Learning-Opt-Out': true, /* Watson内でのロギングを禁止 */
             outputElement: '#QuestionText' /* CSS selector or DOM Element */
         });
 
